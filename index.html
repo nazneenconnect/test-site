@@ -1,150 +1,469 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA — Beyond Ordinary</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #222;
-        }
+:root {
+    --bg: #080b14;
+    --card: #111625;
+    --text: #f5f7ff;
+    --muted: #9ba6bd;
+    --accent: #a78bfa;
+    --blue: #60a5fa;
+}
 
-        header {
-            background: #172554;
-            color: white;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        header h2 {
-            font-size: 25px;
-        }
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-        nav a:hover {
-            color: #93c5fd;
-        }
+.ambient {
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(130px);
+    opacity: .17;
+    pointer-events: none;
+    z-index: -1;
+}
 
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #dbeafe, #eff6ff);
-        }
+.glow-one {
+    background: #7c3aed;
+    top: -150px;
+    left: -150px;
+}
 
-        .hero h1 {
-            font-size: clamp(36px, 6vw, 58px);
-            margin-bottom: 20px;
-            color: #172554;
-        }
+.glow-two {
+    background: #2563eb;
+    right: -200px;
+    top: 45%;
+}
 
-        .hero p {
-            font-size: 18px;
-            line-height: 1.7;
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    background: rgba(8, 11, 20, .8);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,.07);
+}
 
-        .btn {
-            background: #2563eb;
-            color: white;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.logo {
+    font: 700 25px 'Space Grotesk', sans-serif;
+    letter-spacing: -1px;
+}
 
-        .btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
+.logo span {
+    color: var(--accent);
+}
 
-        .about {
-            padding: 60px 20px;
-            text-align: center;
-            max-width: 800px;
-            margin: auto;
-        }
+nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
 
-        .about h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
+nav a {
+    color: var(--muted);
+    font-size: 14px;
+    transition: .25s;
+}
 
-        .about p {
-            line-height: 1.8;
-            color: #555;
-        }
+nav a:hover {
+    color: white;
+}
 
-        footer {
-            background: #172554;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+.nav-cta {
+    padding: 10px 17px;
+    border: 1px solid #6551a8;
+    border-radius: 9px;
+    color: white;
+}
+
+.hero {
+    min-height: 85vh;
+    padding: 100px 8% 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.eyebrow {
+    color: #c4b5fd;
+    border: 1px solid rgba(167,139,250,.3);
+    background: rgba(167,139,250,.08);
+    border-radius: 100px;
+    padding: 9px 16px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+.hero h1 {
+    font: 700 clamp(45px, 8vw, 88px)/1.05 'Space Grotesk', sans-serif;
+    letter-spacing: -4px;
+    max-width: 900px;
+}
+
+.gradient-text {
+    background: linear-gradient(100deg, #c4b5fd, #818cf8, #67e8f9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 590px;
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 17px;
+    margin: 26px 0 35px;
+}
+
+.actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 15px 23px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.btn-primary {
+    color: #090b14;
+    background: linear-gradient(110deg, #c4b5fd, #818cf8);
+    box-shadow: 0 0 35px rgba(129,140,248,.2);
+}
+
+.btn-secondary {
+    border: 1px solid #30384d;
+    background: rgba(255,255,255,.025);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 35px rgba(129,140,248,.18);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 760px;
+    width: 100%;
+    margin-top: 85px;
+}
+
+.stat {
+    padding: 24px 12px;
+    border-right: 1px solid #252b3c;
+}
+
+.stat:last-child {
+    border: none;
+}
+
+.stat h2 {
+    font: 700 30px 'Space Grotesk', sans-serif;
+    color: #c4b5fd;
+}
+
+.stat p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+section.content {
+    padding: 90px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 50px;
+}
+
+.section-heading h2 {
+    font: 700 clamp(30px, 5vw, 46px) 'Space Grotesk', sans-serif;
+    letter-spacing: -1.5px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-top: 15px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background: linear-gradient(145deg, rgba(24,32,52,.9), rgba(13,17,29,.9));
+    border: 1px solid #252d42;
+    border-radius: 18px;
+    padding: 30px;
+    transition: .35s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: #8172d8;
+    background: #151b2d;
+}
+
+.card-icon {
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: rgba(167,139,250,.12);
+    font-size: 23px;
+    margin-bottom: 25px;
+}
+
+.card h3 {
+    font: 600 21px 'Space Grotesk', sans-serif;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.showcase {
+    border: 1px solid #292c49;
+    border-radius: 24px;
+    background:
+      radial-gradient(ellipse at top right, rgba(124,58,237,.2), transparent 50%),
+      linear-gradient(130deg, #12182a, #0e1220);
+    padding: 65px 30px;
+    text-align: center;
+}
+
+.showcase h2 {
+    font: 700 clamp(30px, 5vw, 50px) 'Space Grotesk', sans-serif;
+}
+
+.showcase p {
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 540px;
+    margin: 18px auto 28px;
+}
+
+footer {
+    border-top: 1px solid #242a3a;
+    padding: 30px 8%;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+footer strong {
+    color: white;
+}
+
+.reveal {
+    animation: rise .9s ease both;
+}
+
+@keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 760px) {
+    header { padding: 18px 5%; }
+    nav { gap: 14px; }
+    nav a { font-size: 12px; }
+    .nav-cta { display: none; }
+    .hero { padding: 85px 6% 60px; }
+    .hero h1 { letter-spacing: -2px; }
+    .stats { margin-top: 55px; gap: 0; }
+    .stat h2 { font-size: 24px; }
+    section.content { padding: 65px 6%; }
+    .cards { grid-template-columns: 1fr; }
+    .card { padding: 25px; }
+}
+
+@media (max-width: 380px) {
+    nav { gap: 10px; }
+    nav a { font-size: 11px; }
+    .stat p { font-size: 10px; }
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h2>My Website</h2>
+<div class="ambient glow-one"></div>
+<div class="ambient glow-two"></div>
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+<header>
+    <a href="#home" class="logo">NOVA<span>.</span></a>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#contact" class="nav-cta">Let's Connect ↗</a>
+    </nav>
+</header>
 
-    <main>
-        <section class="hero" id="home">
-            <h1>Welcome to My Website!</h1>
+<main>
+    <section class="hero" id="home">
+        <div class="eyebrow reveal">✦ A new digital experience</div>
 
+        <h1 class="reveal">
+            Think bigger.<br>
+            Create <span class="gradient-text">something</span><br>
+            extraordinary.
+        </h1>
+
+        <p class="reveal">
+            Welcome to NOVA — a space for bold ideas, creative thinking,
+            and exciting possibilities. Your next big thing starts right here.
+        </p>
+
+        <div class="actions reveal">
+            <a href="#about" class="btn btn-primary">Discover NOVA ↗</a>
+            <a href="#features" class="btn btn-secondary">Explore Features</a>
+        </div>
+
+        <div class="stats reveal">
+            <div class="stat">
+                <h2>01</h2>
+                <p>Think differently</p>
+            </div>
+            <div class="stat">
+                <h2>∞</h2>
+                <p>Endless possibilities</p>
+            </div>
+            <div class="stat">
+                <h2>100%</h2>
+                <p>Made for the future</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content" id="about">
+        <div class="section-heading">
+            <div class="eyebrow">The NOVA philosophy</div>
+            <h2>Not just another website.</h2>
             <p>
-                This is my own website, built with HTML and CSS.
-                Explore my website and discover something amazing.
+                Great things happen when imagination meets intention.
+                We're here to turn everyday ideas into remarkable experiences.
             </p>
+        </div>
 
-            <a href="#about" class="btn">Explore More</a>
-        </section>
+        <div class="cards">
+            <article class="card">
+                <div class="card-icon">✦</div>
+                <h3>Bold by Design</h3>
+                <p>
+                    A distinctive look, thoughtful details, and a visual
+                    experience that stands out from the crowd.
+                </p>
+            </article>
 
-        <section class="about" id="about">
-            <h2>About Us</h2>
+            <article class="card">
+                <div class="card-icon">◈</div>
+                <h3>Built for Everyone</h3>
+                <p>
+                    A seamless experience across mobile, tablet, and desktop,
+                    wherever inspiration finds you.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">↗</div>
+                <h3>Always Evolving</h3>
+                <p>
+                    Stay curious, embrace new ideas, and keep moving toward
+                    something better every single day.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="content" id="features">
+        <div class="showcase">
+            <div class="eyebrow">Your next chapter</div>
+            <h2>Make your ideas <span class="gradient-text">matter.</span></h2>
             <p>
-                Welcome to my website! This is where I share my ideas,
-                projects, and creativity with the world.
-                Customize this section with your own content.
+                Every great journey begins with a single step.
+                Take yours today and turn your vision into something real.
             </p>
-        </section>
-    </main>
+            <a href="#contact" class="btn btn-primary">Let's Get Started ↗</a>
+        </div>
+    </section>
 
-    <footer id="contact">
-        <p>&copy; 2026 My Website. All rights reserved.</p>
-    </footer>
+    <section class="content" id="contact">
+        <div class="section-heading">
+            <div class="eyebrow">Stay connected</div>
+            <h2>Every great idea starts somewhere.</h2>
+            <p>
+                Have a project, a question, or an idea worth sharing?
+                Replace this text with your contact details and invite
+                people to connect with you.
+            </p>
+            <div class="actions" style="margin-top:28px">
+                <a href="mailto:hello@example.com" class="btn btn-primary">
+                    Say Hello ✉
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <a href="#home"><strong>NOVA.</strong></a>
+    <p>Designed for possibilities. © 2026 NOVA.</p>
+    <a href="#home">Back to top ↑</a>
+</footer>
 
 </body>
 </html>
